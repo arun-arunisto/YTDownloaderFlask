@@ -1,0 +1,43 @@
+.app-body {
+    text-align: center;
+}
+.form-style {
+    border: solid 1px red;
+    padding: 10px;
+    width: 75%;
+    margin:0 auto;
+}
+
+.card {
+    width: 50%;
+    margin:0 auto;
+    padding: 20px;
+}
+
+.input-style {
+    margin:10px;
+}
+
+.input-style input[type=text] {
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    padding: 10px;
+    margin: 0auto;
+}
+
+.btn {
+    width: 150px;
+    height: 30px;
+    color: white;
+    background: blue;
+    border: none;
+}
+
+.btn:hover {
+    cursor:pointer;
+    color: blue;
+    background: white;
+    border: solid 1px red;
+}
+

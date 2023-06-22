@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %} Youtube Download {% endblock %}
+{% block content %}
+<div class="app-body">
+    <div class="image">
+        <img src="https://www.freepnglogos.com/uploads/youtube-logo-png/youtube-transparent-youtube-icon-29.png" width="200px;" alt="youtube_logo">
+    </div>
+    <div class="mb-3">
+        <h3 class="card-title">You<span style="color:red;"> Loader</span> V1.0</h3>
+    </div>
+    {% for error in get_flashed_messages(category_filter=["fail"]) %}
+        <p style="color:red;">{{error}}</p>
+    {% endfor %}
+    {% if not get_flashed_messages(category_filter=["video"]) %}
+    <div class="card">
+
+        <form action="/submit" method="post">
+            <div class="input-style">
+                <input type="text" name="url" placeholder="Paste url">
+            </div>
+            <div class="input-style">
+                <input type="submit" class="btn" value="Search">
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <div class="card">
+        <form action="/download" method="post">
+            <div class="input-style">
+                <input type="text" name="url" value="{{data}}" readonly>
+            </div>
+            {% for i in get_flashed_messages(category_filter=["video"]) %}
+            <input type="radio" id="{{i[0]}}" name="resolution" value="{{i[0]}}">
+            <label for="{{i[0]}}">{{i[1]}}</label>
+            <br>
+            {% endfor %}
+            <div class="input-style">
+                <input type="submit" value="Download" class="btn">
+            </div>
+        </form>
+        <button class="btn"><a href="{{url_for('app_bp.index')}}" style="text-decoration:none;">Back</a></button>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
